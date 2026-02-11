@@ -27,12 +27,19 @@ public class TargetedAd {
 
 
     /* your code here */
-
     DataCollector d = new DataCollector();
     d.setData("socialMediaPostsSmall.txt", "target.txt");
-
+    String post = getNextPost();
+    String target = getNextTargetWord();
+    while (post.equals("NONE") == false)
+    {
+      if (post.contains(target))
+      {
+        
+      }
+    }
+  
+     
   }
 
 }
-
-
