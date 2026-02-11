@@ -28,10 +28,11 @@ public class TargetedAd {
 
     /* your code here */
 
-    DataCollector dc = new DataCollector();
-    dc.setData("socialMediaPostsSmall.txt", "target.txt");
+    DataCollector d = new DataCollector();
+    d.setData("socialMediaPostsSmall.txt", "target.txt");
 
   }
 
 }
+
 
