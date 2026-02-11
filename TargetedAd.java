@@ -33,6 +33,30 @@ public class TargetedAd {
 
 
     /* your code here */
+
+    DataCollector dc = new DataCollector();
+    dc.setData("socialMediaPostsSmall.txt", "target.txt");
+
+    // Iterate through social media posts to find users who might have pets
+    String post = dc.getNextPost();
+    while (!post.equals("NONE")) {
+        String username = post.split(" ")[0];
+        // Check if post contains any target word
+        String target = dc.getNextTargetWord();
+        boolean hasPetReference = false;
+        while (!target.equals("NONE")) {
+            if (post.toLowerCase().indexOf(target.toLowerCase()) != -1) {
+                hasPetReference = true;
+                break;
+            }
+            target = dc.getNextTargetWord();
+        }
+        if (hasPetReference) {
+            // Add username to list (we'll collect them in the next step)
+            System.out.println("Found user: " + username);
+        }
+        post = dc.getNextPost();
+    }
     
      
   }
