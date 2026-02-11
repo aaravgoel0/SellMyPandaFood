@@ -38,8 +38,41 @@ public class TargetedAd {
         
       }
     }
+
+    String usernames = "";
+    String post = dc.getNextPost();
+
+    while (!post.equals("NONE")) {
+      int firstSpace = post.indexOf(" ");
+      String username = post.substring(0, firstSpace);
+      String message = post.substring(firstSpace);
+
+      String target = dc.getNextTargetWord();
+      boolean matchFound = false;
+
+      while (!target.equals("NONE")) {
+        if (message.indexOf(target.toLowerCase()) != -1) {
+          matchFound = true;
+        }
+        target = dc.getNextTargetWord();
+      }
+
+      if (matchFound) {
+        usernames += username + " ";
+      }
+
+      post = dc.getNextPost();
+    }
+
+  
+    String adMessage = "Check out our panda food sale today!";
+    dc.prepareAdvertisement("targetedUsers.txt", usernames, adMessage);
+
+    System.out.println("Targeted users saved to targetedUsers.txt");
+
   
      
   }
 
 }
+
